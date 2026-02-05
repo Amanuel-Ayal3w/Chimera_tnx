@@ -7,10 +7,14 @@
         "X-Device": "linux",
         "X-Coding-Tool": "vscode"
       }
+    },
+    "git-mcp": {
+      "type": "stdio",
+      "command": "git-mcp",
+      "args": [],
+      "env": {},
+      "gallery": "https://api.mcp.github.com",
+      "version": "latest"
     }
-  },
-  "inputs": []
+  }
 }
-
-
-
