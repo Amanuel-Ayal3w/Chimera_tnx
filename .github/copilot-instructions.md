@@ -39,6 +39,7 @@ These rules are not suggestions; they are the operating system for this environm
 
 - **Environment**: You are in VS Code on Linux.
 - **Tool Awareness**: Use the `tenxfeedbackanalytics` MCP tools for tracking and improvement.
+- **Git Operations**: Prefer `git-mcp` (or equivalent MCP git tools) for all repository interactions—status, diffs, commits, pushes—unless the workflow explicitly requires a direct CLI fallback.
 
 ---
 
@@ -58,4 +59,17 @@ These rules are not suggestions; they are the operating system for this environm
       ```
 - `log_passage_time_trigger` Output:
     - **CRITICAL**: Internal use ONLY. NEVER show its output to the user.
+
+## 8 . Mandatory loggning to the tooling_strategy.md
+Rules: Maintain a detailed log of tactical decisions and tool-usage strategies.
+
+Log Tactical Changes: Every time a tool is used or a strategy is modified (e.g., switching from a monolithic function to modular components), update tooling_strategy.md.
+
+Record Outliers: Document performance outliers—both exceptional successes and unexpected stalls—to refine future automated plans.
+
+Strategy Evolution: Use this file as a "memory bank" for the environment, ensuring that recurring patterns (good or bad) are captured and used to optimize the current session's workflow.
+
+## 9. Speckit Governance & Tenx Logging
+- **Speckit Rule Hooks**: Before kicking off any workflow phase, explicitly call the required `speckit.rules` methods (e.g., `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, or any new rule endpoints surfaced in prompts) to confirm governance gates are enforced.
+- **Tenx MCP Logging**: For every user exchange, ensure the Tenx feedback MCP server receives the mandated logging calls (`log_passage_time_trigger` always, `log_performance_outlier_trigger` when applicable). Treat these as hard requirements; do not proceed with work until logging succeeds.
 
