@@ -1,0 +1,19 @@
+version: 1
+ci:
+  review_levels:
+    - standard
+policies:
+  - name: Spec Alignment
+    description: |
+      Ensure every change stays consistent with the contracts defined in specs/_meta.md,
+      specs/functional.md, specs/technical.md, and the skill READMEs. Flag any code or tests
+      that drift from those documents or introduce undocumented behavior.
+  - name: Security & Governance
+    description: |
+      Inspect diffs for secrets exposure, unsafe external calls, or missing guardrails that
+      violate governance requirements (wallet limits, HITL enforcement, signed skills, etc.).
+      Highlight any dependency changes that could introduce known vulnerabilities.
+requirements:
+  block_on:
+    - spec_alignment
+    - security_regressions
