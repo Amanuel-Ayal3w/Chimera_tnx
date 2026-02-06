@@ -1,1 +1,1 @@
-"""Project Chimera skill package namespace."""
+"""Python package for Project Chimera skill implementations."""

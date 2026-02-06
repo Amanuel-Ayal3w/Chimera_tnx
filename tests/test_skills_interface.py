@@ -1,4 +1,10 @@
-"""Skill interface contract tests."""
+"""Skill interface contract tests.
+
+Each test asserts that the public entrypoints for the skills accept the full
+parameter set documented in skills/README.md and specs/technical.md. They
+currently fail because the skill functions raise NotImplementedError and do not
+return contract-compliant dictionaries yet.
+"""
 from __future__ import annotations
 
 from datetime import datetime
@@ -10,22 +16,31 @@ from skills.skill_generate_multimodal_content import interface as multimodal_int
 from skills.skill_validate_content import interface as validation_interface
 
 
-def test_fetch_trends_interface_signature() -> None:
+@pytest.fixture
+def time_window() -> dict[str, str]:
+    return {
+        "start": "2026-02-01T00:00:00Z",
+        "end": "2026-02-06T00:00:00Z",
+    }
+
+
+def test_fetch_trends_signature_and_contract(time_window: dict[str, str]) -> None:
     response = trend_interface.fetch_trends(
         trace_id="trace-abc",
         planner_task_id="task-xyz",
         platform="twitter",
         topics=["solar fashion"],
-        time_window={"start": "2026-02-01T00:00:00Z", "end": "2026-02-06T00:00:00Z"},
+        time_window=time_window,
         signals={"include_news": True, "include_social": True, "include_commerce": False},
         geo="global",
         persona_priority=["eco-conscious"],
     )
 
     assert response["version"] == "1.0"
+    assert response["payload"]["platform"] == "twitter"
 
 
-def test_generate_multimodal_interface_contract() -> None:
+def test_generate_multimodal_artifacts_contract(time_window: dict[str, str]) -> None:
     response = multimodal_interface.generate_artifacts(
         trace_id="trace-123",
         planner_task_id="task-789",
@@ -45,9 +60,10 @@ def test_generate_multimodal_interface_contract() -> None:
     )
 
     assert response["status"] == "SUCCESS"
+    assert isinstance(response["payload"]["artifacts"], list)
 
 
-def test_validate_content_interface_contract() -> None:
+def test_validate_artifact_contract() -> None:
     response = validation_interface.validate_artifact(
         trace_id="trace-987",
         planner_task_id="task-654",

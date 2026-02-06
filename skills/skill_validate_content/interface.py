@@ -14,4 +14,4 @@ def validate_artifact(
     risk_toggles: Dict[str, Any],
 ) -> Dict[str, Any]:
     """Apply validation guardrails before Judge/HITL review."""
-    raise NotImplementedError("Validation not implemented yet")
+    raise NotImplementedError("content validation not implemented yet")

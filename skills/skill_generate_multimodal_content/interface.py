@@ -1,7 +1,7 @@
 """Runtime interface for multimodal content generation."""
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 
 def generate_artifacts(
@@ -16,4 +16,4 @@ def generate_artifacts(
     guardrails: Dict[str, Any],
 ) -> Dict[str, Any]:
     """Produce multimodal artifacts per the technical specification."""
-    raise NotImplementedError("Multimodal generation not implemented yet")
+    raise NotImplementedError("multimodal generation not implemented yet")
