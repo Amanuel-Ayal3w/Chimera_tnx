@@ -72,4 +72,12 @@ Capture the active research threads and concrete work completed to operationaliz
 - 2026-02-06 12:31 UTC – Ran `git status -sb` via terminal to verify new skills assets are tracked.
 - 2026-02-06 13:05 UTC – Recreated skill package scaffolding via `create_file` for root and per-skill modules after files were removed.
 - 2026-02-06 13:06 UTC – Rebuilt `tests/` package with failing contract tests using `create_directory`/`create_file`.
+- 2026-02-06 13:20 UTC – Added `pyproject.toml` with uv-managed dependencies (pytest) via `create_file`.
+- 2026-02-06 13:21 UTC – Ran `uv sync` to install dependencies into the managed environment.
+- 2026-02-06 13:25 UTC – Ran `uv run pytest` to verify contract suites fail (expected NotImplemented errors).
+- 2026-02-06 13:35 UTC – Created `scripts/spec_check.py` to enforce presence of spec + skill artifacts.
+- 2026-02-06 13:36 UTC – Authored `Dockerfile` for uv-managed test runs.
+- 2026-02-06 13:37 UTC – Added `Makefile` targets (`setup`, `test`, `spec-check`) standardizing local + container workflows.
+- 2026-02-06 13:45 UTC – Added GitHub Actions workflow (.github/workflows/main.yml) to run make targets on push.
+- 2026-02-06 13:46 UTC – Authored `.coderabbit.yaml` to enforce AI review focus on spec alignment and security.
 
