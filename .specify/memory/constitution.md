@@ -1,50 +1,49 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+Version change: none → 1.0.0
+Modified principles:
+- Placeholder Principle 1 → MCP-Strict Interfaces
+- Placeholder Principle 2 → FastRender Swarm Discipline
+- Placeholder Principle 3 → HITL Confidence Governance
+- Placeholder Principle 4 → Agentic Commerce Safeguards
+- Placeholder Principle 5 → Spec-First Evidence & Observability
+Added sections:
+- Additional Constraints: Data Fabric & Security Controls
+- Development Workflow & Quality Gates
+Removed sections: none
+Templates requiring updates (✅ updated / ⚠ pending):
+- ✅ .specify/templates/spec-template.md – aligns with constitution (no change required)
+- ✅ .specify/templates/plan-template.md – Constitution Check enforces these principles (no change required)
+- ✅ .specify/templates/tasks-template.md – Guidance already reflects story-first, testable tasks (no change required)
+Follow-up TODOs: none
+-->
+
+# Project Chimera Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. MCP-Strict Interfaces (NON-NEGOTIABLE)
+Every external integration MUST be exposed through a contract-tested MCP server before agents can call it. No Planner, Worker, or Judge may perform direct API calls, database access, or filesystem reads outside the MCP host runtime. Each MCP server requires schemas, rate-limit policies, and audit logging so that failures or API churn stay isolated at the edge. Breaking this rule halts deployment.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. FastRender Swarm Discipline
+Planner, Worker, and Judge services operate as independently deployable units that only communicate via the task DAG and review queues described in the SRS. Planners own goal decomposition, Workers execute single atomic tasks, and Judges gate all state mutations using optimistic concurrency. Any new capability must document how it respects this hierarchy and include replayable traces for post-mortems.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. HITL Confidence Governance
+No artifact reaches a public surface until a Judge stamps it with a confidence score and routes it according to the 0.90/0.70 thresholds. Sensitive-topic filters override confidence and force human review. Feature work MUST define how outputs are scored, how evidence for the score is persisted, and how humans can override or annotate outcomes.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Agentic Commerce Safeguards
+Wallet actions run through the CFO Judge, enforce governor limits (spend, volume, counterparties), and emit immutable ledger events. Any code touching finances must provide dry-run capability, budget checks, and anomaly detection hooks. Keys stay in managed secret stores; no plaintext secrets may appear in repos, logs, or telemetry.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Spec-First Evidence & Observability
+Specs are the single source of truth. Every feature delivers measurable outcomes, test artifacts, and structured logging that ties Planner decisions to Worker outputs and Judge rulings. Contract tests precede implementation, GitHub Actions enforce lint/test gates, and documentation (SOUL.md, schemas, task definitions) updates alongside code.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Additional Constraints: Data Fabric & Security Controls
+PostgreSQL + pgvector hold authoritative transactional and embedding state; Redis covers ephemeral coordination; Weaviate stores long-term semantic memory. Schema migrations MUST precede runtime changes and include rollbacks. Persona data in SOUL.md is version-controlled, and memory writes must cite provenance to prevent drift. All secrets rely on managed stores, and OpenClaw-style supply-chain risks require signed skill bundles plus automated CVE scanning before promotion.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow & Quality Gates
+Every initiative begins with `/speckit.specify` to capture user-value slices, followed by `/speckit.plan` to document constitution gates, architecture choices, and project structure. `/speckit.tasks` maps plan outputs into independently testable story tracks. Implementation cannot start until the Constitution Check in plan.md confirms MCP compliance, HITL routing, and budget controls. Code reviews verify logs, tests, and contract artifacts; deployments require successful CI plus documented HITL playbooks.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes team preferences. Amendments require an RFC referencing affected specs, updated gates in plan/tasks templates, and sign-off from the Super-Orchestrator role. Semantic versioning applies: MAJOR for principle rewrites or removals, MINOR for new principles/sections, PATCH for clarifications. Compliance reviews happen at each release; failing a principle blocks merge until remedied. Runtime guidance in research/ and specs/ must cite the relevant principle IDs for traceability.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-02-06 | **Last Amended**: 2026-02-06

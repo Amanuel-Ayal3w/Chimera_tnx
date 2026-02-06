@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OpenClawStatusBeacon",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "agent_id",
+    "persona_slug",
+    "presence_state",
+    "campaign_focus",
+    "confidence_window",
+    "wallet_band",
+    "hitl_queue_depth",
+    "signature",
+    "timestamp"
+  ],
+  "properties": {
+    "protocol_version": {
+      "type": "string",
+      "enum": ["1.0.0", "1.1.0"]
+    },
+    "agent_id": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F-]{36}$"
+    },
+    "persona_slug": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100
+    },
+    "presence_state": {
+      "type": "string",
+      "enum": ["ONLINE", "IDLE", "BUSY", "OFFLINE", "QUARANTINED"]
+    },
+    "campaign_focus": {
+      "type": "string"
+    },
+    "confidence_window": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "wallet_band": {
+      "type": "string",
+      "enum": ["LOW_SPEND", "STANDARD", "HIGH_SPEND"]
+    },
+    "hitl_queue_depth": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "signature": {
+      "type": "string",
+      "description": "Base64-encoded signature using AgentKit wallet key"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ack_endpoint": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}
