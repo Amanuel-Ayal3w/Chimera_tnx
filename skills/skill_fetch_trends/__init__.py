@@ -1,0 +1,1 @@
+"""Trend fetching skill package."""
